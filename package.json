@@ -1,0 +1,13 @@
+{
+    "name": "sendfeather-browser-extension",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "description": "Sendfeather browser extension — email deliverability (MX/SPF/DKIM/DMARC) checker popup.",
+    "license": "GPL-2.0-or-later",
+    "scripts": {
+        "test": "node --test test/checks.test.mjs",
+        "check": "node --check checks.js && node --check popup.js",
+        "lint:firefox": "npx --yes web-ext lint --source-dir . --ignore-files 'test/**'"
+    }
+}

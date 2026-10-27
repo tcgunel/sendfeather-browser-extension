@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Sendfeather — email checker</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <main class="app">
+        <header class="masthead">
+            <img src="icons/icon-32.png" alt="" width="20" height="20">
+            <span class="brand">Sendfeather</span>
+            <span class="masthead-note">email checker</span>
+        </header>
+
+        <form id="check-form" autocomplete="off" novalidate>
+            <div class="field">
+                <input id="domain" name="domain" type="text" inputmode="url" spellcheck="false"
+                       placeholder="example.com" aria-label="Domain to check">
+                <button type="submit" id="check-button">Check</button>
+            </div>
+            <p class="field-note" id="form-note" hidden></p>
+        </form>
+
+        <section id="intro" class="intro">
+            <p>Reads a domain's public DNS — MX, SPF, DKIM and DMARC — and explains
+            what each record says, the same way mailbox providers read it.</p>
+        </section>
+
+        <section id="results" hidden>
+            <div class="verdict" id="verdict">
+                <p class="verdict-headline" id="verdict-headline"></p>
+                <p class="verdict-note" id="verdict-note"></p>
+            </div>
+            <ul class="checks" id="checks"></ul>
+        </section>
+
+        <footer class="footer">
+            <a href="https://sendfeather.com/tools/email-checker" data-external>Open the full checker</a>
+            <a href="https://sendfeather.com/docs/domains" data-external>Fix guides</a>
+        </footer>
+    </main>
+    <script type="module" src="popup.js"></script>
+</body>
+</html>

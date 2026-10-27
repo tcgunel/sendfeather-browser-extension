@@ -1,0 +1,279 @@
+/*
+  Sendfeather design tokens: light-first,
+  dark as an equal via prefers-color-scheme. Status colors ship as a trio —
+  surface (tinted rows), text (AA at small sizes), border.
+*/
+
+:root {
+    color-scheme: light dark;
+
+    --background: #faf9f6;
+    --foreground: #20242e;
+    --card: #ffffff;
+    --primary: #c93e0e;
+    --primary-foreground: #ffffff;
+    --muted-foreground: #5c6470;
+    --border: #e7e5e0;
+    --input: #dcd9d2;
+    --ring: #f4531c;
+
+    --delivered-text: #17754c;
+    --delivered-surface: #e4f2ea;
+    --waiting-text: #8a6114;
+    --waiting-surface: #f5eddc;
+    --destructive-text: #a63d32;
+    --destructive-surface: #f9e9e7;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #15171c;
+        --foreground: #e8e9eb;
+        --card: #1b1e24;
+        --primary: #ff6a3d;
+        --primary-foreground: #15171c;
+        --muted-foreground: #9aa1ab;
+        --border: #2a2e36;
+        --input: #343945;
+        --ring: #ff6a3d;
+
+        --delivered-text: #4ac08a;
+        --delivered-surface: #1c2a23;
+        --waiting-text: #d9a94e;
+        --waiting-surface: #2b2519;
+        --destructive-text: #e07b70;
+        --destructive-surface: #2e1f1d;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    width: 400px;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 560px;
+    overflow-y: auto;
+    padding: 14px 14px 12px;
+}
+
+.masthead {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.masthead img {
+    display: block;
+}
+
+.brand {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.masthead-note {
+    margin-left: auto;
+    color: var(--muted-foreground);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.field {
+    display: flex;
+    gap: 8px;
+}
+
+input[type='text'] {
+    flex: 1;
+    min-width: 0;
+    height: 38px;
+    padding: 0 10px;
+    border: 1px solid var(--input);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--foreground);
+    font: inherit;
+}
+
+input[type='text']:focus {
+    border-color: var(--ring);
+    outline: 2px solid color-mix(in srgb, var(--ring) 35%, transparent);
+    outline-offset: 1px;
+}
+
+button[type='submit'] {
+    height: 38px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--primary);
+    color: var(--primary-foreground);
+    font: inherit;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+button[type='submit']:hover:not(:disabled) {
+    opacity: 0.92;
+}
+
+button[type='submit']:disabled {
+    cursor: default;
+    opacity: 0.65;
+}
+
+.field-note {
+    margin: 6px 0 0;
+    color: var(--destructive-text);
+    font-size: 12px;
+}
+
+.intro p {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 12px;
+}
+
+.verdict {
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+
+.verdict--ok {
+    background: var(--delivered-surface);
+    color: var(--delivered-text);
+}
+
+.verdict--warn {
+    background: var(--waiting-surface);
+    color: var(--waiting-text);
+}
+
+.verdict--fail {
+    background: var(--destructive-surface);
+    color: var(--destructive-text);
+}
+
+.verdict-headline {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.verdict-note {
+    margin: 4px 0 0;
+    font-size: 12px;
+    opacity: 0.95;
+}
+
+.checks {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.check {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--card);
+    padding: 10px 12px;
+}
+
+.check-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.check-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.chip {
+    margin-left: auto;
+    border-radius: 999px;
+    padding: 2px 7px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.check--ok .chip {
+    background: var(--delivered-surface);
+    color: var(--delivered-text);
+}
+
+.check--warn .chip {
+    background: var(--waiting-surface);
+    color: var(--waiting-text);
+}
+
+.check--fail .chip {
+    background: var(--destructive-surface);
+    color: var(--destructive-text);
+}
+
+.check-summary {
+    margin: 6px 0 0;
+    font-size: 12.5px;
+}
+
+.check details {
+    margin-top: 6px;
+}
+
+.check summary {
+    color: var(--muted-foreground);
+    font-size: 11.5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.detail-line {
+    margin: 4px 0 0;
+    color: var(--muted-foreground);
+    font-size: 11.5px;
+    word-break: break-word;
+}
+
+.footer {
+    display: flex;
+    gap: 14px;
+    margin-top: 2px;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+}
+
+.footer a {
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Sendfeather Email Checker",
+  "short_name": "Sendfeather",
+  "description": "Check any domain's MX, SPF, DKIM and DMARC records in plain language. Free, no account, no tracking.",
+  "version": "1.0.0",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "Check this domain's email setup",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://cloudflare-dns.com/*",
+    "https://dns.google/*"
+  ]
+}
